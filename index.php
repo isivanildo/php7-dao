@@ -17,10 +17,27 @@ require_once("config.php");
 //$search = Usuario::search("r");
 //echo json_encode($search);
 
-$usuario = new Usuario();
-$usuario->login("Mauro", "@$%66");
+//$usuario = new Usuario();
+//$usuario->login("Mauro", "@$%66");
+//echo $usuario;
 
-echo $usuario;
+/*
+$aluno = new Usuario('Corina', '12345');
+
+//$aluno->setDeslogin("Aluno");
+//$aluno->setDesSenha("@#45");
+$aluno->insert();
+
+echo $aluno;
+*/
+
+$aluno = new Usuario();
+
+$aluno->loadById(19);
+
+$aluno->update("Cardoso", "#$%76");
+
+echo $aluno;
 
 
 ?>
