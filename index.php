@@ -31,13 +31,20 @@ $aluno->insert();
 echo $aluno;
 */
 
-$aluno = new Usuario();
+/*$aluno = new Usuario();
 
 $aluno->loadById(19);
 
 $aluno->update("Cardoso", "#$%76");
 
 echo $aluno;
+*/
 
+$usuario = new Usuario();
+
+$usuario->loadById(14);
+$usuario->delete();
+
+echo $usuario;
 
 ?>

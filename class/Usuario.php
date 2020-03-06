@@ -40,7 +40,7 @@ class Usuario{
 	}
 
 	public function loadById($id){
-		$sql = new SQL();
+		$sql = new Sql();
 
 		$resultado = $sql->select("select * from tb_usuarios where idusuario = :ID", array(
 			"ID"=>$id));
@@ -57,14 +57,14 @@ class Usuario{
 	}
 
 	public static function search($login){
-		$sql = new SQL();
+		$sql = new Sql();
 
 		return $sql->select("SELECT * FROM tb_usuarios WHERE deslogin LIKE :SEARCH ORDER BY deslogin", array(
 			'SEARCH'=>"%".$login."%"));
 	}
 
 	public function login($login, $senha){
-		$sql = new SQL();
+		$sql = new Sql();
 
 		$resultado = $sql->select("select * from tb_usuarios where deslogin = :LOGIN AND dessenha = :SENHA", array(
 			"LOGIN"=>$login,
@@ -110,6 +110,20 @@ class Usuario{
 		"SENHA"=>$this->getDesSenha(),
 		"ID"=>$this->getIdUsuario())
 	);
+	}
+
+	public function delete(){
+
+		$sql = new Sql();
+
+		$sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+			":ID"=>$this->getIdUsuario()
+		));
+
+		$this->setIdUsuario(0);
+		$this->setDesLogin("");
+		$this->setDesSenha("");
+		$this->setDtCadastro(new DateTime());
 	}
 
 	public function __construct($login = "", $senha = ""){
